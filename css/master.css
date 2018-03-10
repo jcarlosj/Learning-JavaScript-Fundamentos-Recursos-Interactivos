@@ -3,28 +3,28 @@
 @import 'font-awesome';
 
 *{
+	box-sizing: border-box;
+	font-family: sans-serif;
+	list-style: none;
 	margin:0px;
 	padding:0px;
-	list-style: none;
 	text-decoration: none;
-	font-family: sans-serif;
-	box-sizing: border-box;
 }
 
 .content-fluid{
-	position:relative;
-	margin:auto;
-	width:100%;
 	height: auto;
+	margin:auto;
+	position:relative;
+	width:100%;
 }
 
 .row{
-	position:relative;
-	margin:auto;
-	width:100%;
-	height: auto;
 	clear:both;
 	display:table;
+	height: auto;
+	margin:auto;
+	position:relative;
+	width:100%;
 }
 
 [class*="col-"]{
@@ -32,18 +32,18 @@
 	padding:0px;
 }
 
-/* ENCABEZADO */
+/* Encabezado sitio */
 header #logotipo{
-	text-align: center;
 	padding:20px;
+	text-align: center;
 }
 
 header nav ul li a{
-	display: block;
 	background:#333;
-	text-align:center;
-	padding:10px;
 	color:white;
+	display: block;
+	padding:10px;
+	text-align:center;
 }
 
 /* SISTEMA DE COLUMNAS: usando Media Queries */
@@ -64,11 +64,10 @@ header nav ul li a{
 	.col-lg-1 {width: 8.33333333%;}
 	.col-lg-0{display:none;}
 
-	/*CABEZOTE*/
-
+	/* Encabezado sitio */
 	header nav ul li a{
-		margin:30% 5px;
 		font-size:14px;
+		margin:30% 5px;
 	}
 
 	header #logotipo img{
@@ -94,11 +93,10 @@ header nav ul li a{
 	.col-md-1{width: 8.33333333%;}
 	.col-md-0{display:none;}
 
-	/*CABEZOTE*/
-
+	/* Encabezado sitio */
 	header nav ul li a{
-		margin:30% 5px;
 		font-size:14px;
+		margin:30% 5px;
 	}
 
 	header #logotipo img{
@@ -124,27 +122,24 @@ header nav ul li a{
 	.col-sm-1{width: 8.33333333%;}
 	.col-sm-0{display:none;}
 
-	/*CABEZOTE*/
-
+	/* Encabezado sitio */
 	header nav ul li a{
-		margin:28% 2px;
 		font-size:10px;
+		margin:28% 2px;
 	}
 
 	header #logotipo img{
 		width:100%;
 	}
 
-	/*SLIDE*/
-
-	#slide ul li .textoSlide h1{
+	/* Contenido del Slide */
+	#slider ul li .content-slide h1{
 		font-size: 20px;
 	}
 
-	#slide ul li .textoSlide h3{
+	#slider ul li .content-slide h3{
 		font-size: 14px;
 	}
-
 
 }
 
@@ -165,34 +160,32 @@ header nav ul li a{
 	.col-xs-1{width: 8.33333333%;}
 	.col-xs-0{display:none;}
 
-	/*CABEZOTE*/
-
+	/* Encabezado sitio */
 	header nav ul li a{
-		margin:0px;
-		font-size:14px;
 		border-bottom:1px solid #444;
+		font-size:14px;
+		margin:0px;
 	}
 
 	header #logotipo img{
 		width:50%;
 	}
 
-	/*SLIDE*/
-
-	#slide ul li .textoSlide{
+	/* Manejador del Slider */
+	#slider ul li .content-slide {
 		display:none;
 	}
 
-	#slide #retroceder{
-		top:40%;
+	#slider #control-slider #back-arrow {
 		font-size: 1em;
 		left:2%;
+		top:40%;
 	}
 
-	#slide #avanzar{
-		top:40%;
+	#slider #control-slider #forward-arrow {
 		font-size: 1em;
 		right:2%;
+		top:40%;
 	}
 
 }

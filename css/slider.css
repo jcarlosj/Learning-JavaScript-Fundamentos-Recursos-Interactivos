@@ -1,0 +1,93 @@
+/* Slider */
+#slider {
+	margin: auto;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+}
+
+#slider ul {
+	clear: both;
+	display: table;
+	height: auto;
+	left: 0%;
+	margin: auto;
+	position: relative;
+	width: 400%;
+}
+
+#slider ul li {
+	float: left;
+	position: relative;
+	width: 25%;
+}
+
+#slider ul li img {
+	width: 100%;
+}
+
+/* Paginación del Slider */
+#slider #pager {
+	bottom: 10px;
+	left: 0;
+	margin: auto;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	z-index :1;
+}
+
+#slider #pager li {
+	color: white;
+	cursor: pointer;
+	display: inline-block;
+	margin: 0px 5px;
+	opacity: .5;
+	text-shadow: 0px 0px 5px #333;
+}
+
+#slider #pager li:first-child {
+	opacity: 1;
+}
+
+/* Manejador del Slider */
+#slider #control-slider .arrows {
+	color: white;
+	cursor: pointer;
+	font-size: 2em;
+	position: absolute;
+	z-index: 2;
+}
+
+#slider #control-slider #back-arrow {
+	/* Retroceder */
+	left: 2%;
+	top: 45%;
+}
+
+#slider #control-slider #forward-arrow {
+	/* Avanzar */
+	right: 2%;
+	top: 45%;
+}
+
+/* Contenido del Slide */
+#slider ul li .content-slide {
+	bottom: 40px;
+	color: white;
+	left: 0;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	z-index: 1;
+}
+
+#slider ul li .content-slide h1 {
+	background: rgba(0,0,0,.5);
+	padding: 5px 0;
+}
+
+#slider ul li .content-slide h3 {
+	background: rgba(0,0,0,.5);
+	padding-bottom: 10px;
+}
