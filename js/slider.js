@@ -34,6 +34,9 @@ var slider = {
     });
     // Cambia el atributo de opacidad al elemento actual o activo
     event .target .parentNode .style .opacity = 1;
+
+    // Agrega Animación al contenedor
+    slider .contenedor .style .transition = '.7s left ease-in-out';
   }
 }
 
