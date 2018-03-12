@@ -8,7 +8,8 @@ var slider = {
   li: null,
   avanzar: null,
   retroceder: null,
-  velocidad: 4000,
+  velocidad: 3000,
+  reiniciar_loop: false,
   /* Inicializa las funcionalidades del Slider */
   inicio : function() {
     slider .li = document .querySelectorAll( '#slider ul li' );         // Todos los elementos LI que contienen un slide
@@ -74,7 +75,7 @@ var slider = {
   },
   // Agrega la funcioalidad de movimiento al Slider
   mover : function( pagina ) {
-    console .log( ( 'left: ', pagina * 100 * -1 ) + '%' );
+    slider .reiniciar_loop = true;                                              // Reinicial el Loop del desplazamiento automático
     slider .contenedor .style .left = ( pagina * 100 * -1 ) + '%';
     slider .animacion( 'slide' );                                               // Agrega Animación al contenedor
   },
@@ -119,17 +120,26 @@ var slider = {
   // Agrega la manera en que el Slider Avance automáticamente
   automatico : function() {
     setInterval( () => {
-        slider .avanza();
 
-        // Recorre las páginas del paginador
-        slider .paginador .forEach( ( slide ) => {
-          //console .log( 'data-page', slide .getAttribute( 'data-page' ) );
+        // Valida si se ha reiniciado el Loop (o intervalo)
+        if( slider .reiniciar_loop ) {
+          // Si ha sido reiniciado cambia el valor de la bandera y no avanza hasta el siguiente intervalo
+          slider .reiniciar_loop = false;
+        }
+        else {
+          // No ha sido reiniciado y continua avanzando
+          slider .avanza();
 
-          // Valida que el número de la diapositiva sea igual al número de pagina actual
-          if( slide .getAttribute( 'data-page' ) == slider .pagina ) {
-            slider .cambiaEstadoPaginador( slide );
-          }
-        });
+          // Recorre las páginas del paginador
+          slider .paginador .forEach( ( slide ) => {
+            //console .log( 'data-page', slide .getAttribute( 'data-page' ) );
+
+            // Valida que el número de la diapositiva sea igual al número de pagina actual
+            if( slide .getAttribute( 'data-page' ) == slider .pagina ) {
+              slider .cambiaEstadoPaginador( slide );
+            }
+          });
+        }
 
     }, slider .velocidad );
   }
