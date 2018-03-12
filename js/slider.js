@@ -12,11 +12,11 @@ var slider = {
   reiniciar_loop: false,
   /* Inicializa las funcionalidades del Slider */
   inicio : function() {
+    slider .contenedor = document .querySelector( '#slider ul' );       // Obtiene el contenedor donde se despliegan cada uno de los Slides
     slider .li = document .querySelectorAll( '#slider ul li' );         // Todos los elementos LI que contienen un slide
     slider .automatico();
     slider .paginacion();
     slider .flechas();
-
   },
   // Agrega la funcionalidad de desplazamiento de 'diapositivas' usando las Flechas laterales del Slider
   flechas : function() {
@@ -27,6 +27,7 @@ var slider = {
     /* Agrega evento 'click' a las flechas */
     slider .avanzar .addEventListener( 'click', slider .avanza );
     slider .retroceder .addEventListener( 'click', slider .retrocede );
+
   },
   // Avanza al hacer uso de la flecha del lado derecho del Slider
   avanza : function() {
@@ -41,6 +42,8 @@ var slider = {
 
     slider .mover( slider .pagina );
     console .log( 'pagina: ', slider .pagina );
+
+    slider .mueveIndicadorPagina( slider .pagina );
   },
   // Retrocede al hacer uso de la flecha del lado derecho del Slider
   retrocede : function () {
@@ -55,11 +58,12 @@ var slider = {
 
     slider .mover( slider .pagina );
     console .log( 'pagina: ', slider .pagina );
+
+    slider .mueveIndicadorPagina( slider .pagina );
   },
   // Agrega la funcionalidad de desplazamiento de 'diapositivas' usando el paginador inferior del Slider laterales
   paginacion : function() {
     slider .paginador = document .querySelectorAll( '#pager li' );      // Obtiene todos los elementos que componen el paginador del Slider
-    slider .contenedor = document .querySelector( '#slider ul' );       // Obtiene el contenedor donde se despliegan cada uno de los Slides
 
     // Recorre cada uno de los elementos que representan cada una de las diapositivas del Slider y asigna dinámicamente el evento click a cada uno de ellos
     slider .paginador .forEach( ( slide ) => {
@@ -69,7 +73,7 @@ var slider = {
   // Ejecuta el movimiento del Slider y cambio de estado del Paginador
   accionPaginador : function ( event ) {
     slider .pagina = event .target. parentNode .getAttribute( 'data-page' );    // Captura el atributo otorgado a la propiedad 'data-page' del elemento padre que posee el manejador (span)
-    slider .cambiaEstadoPaginador( event .target .parentNode );
+    slider .cambiaIndicadorPagina( event .target .parentNode );
 
     slider .mover( slider .pagina );
   },
@@ -79,14 +83,26 @@ var slider = {
     slider .contenedor .style .left = ( pagina * 100 * -1 ) + '%';
     slider .animacion( 'slide' );                                               // Agrega Animación al contenedor
   },
-  // Cambia el estado de item activo del paginador del Slider
-  cambiaEstadoPaginador : function ( li ) {
+  // Cambia el estilos de item activo del paginador del Slider
+  cambiaIndicadorPagina : function ( li ) {
     // Recorre cada uno de los elementos que representan las páginas del Slider y cambia el atributo CSS de opacidad
     slider .paginador .forEach( ( item_pagina ) => {
       item_pagina .style .opacity = .5;
     });
     // Cambia el atributo de opacidad al elemento actual o activo
     li .style .opacity = 1;
+  },
+  // Ejecuta el cambio o movimiento activo del paginador del Slider
+  mueveIndicadorPagina : function () {
+    // Recorre las páginas del paginador
+    slider .paginador .forEach( ( slide ) => {
+      //console .log( 'data-page', slide .getAttribute( 'data-page' ) );
+
+      // Valida que el número de la diapositiva sea igual al número de pagina actual
+      if( slide .getAttribute( 'data-page' ) == slider .pagina ) {
+        slider .cambiaIndicadorPagina( slide );
+      }
+    });
   },
   // Agrega animación personalizada al Slider
   animacion : function( tipo ) {
@@ -131,14 +147,7 @@ var slider = {
           slider .avanza();
 
           // Recorre las páginas del paginador
-          slider .paginador .forEach( ( slide ) => {
-            //console .log( 'data-page', slide .getAttribute( 'data-page' ) );
-
-            // Valida que el número de la diapositiva sea igual al número de pagina actual
-            if( slide .getAttribute( 'data-page' ) == slider .pagina ) {
-              slider .cambiaEstadoPaginador( slide );
-            }
-          });
+          slider .mueveIndicadorPagina( slider .pagina );
         }
 
     }, slider .velocidad );
