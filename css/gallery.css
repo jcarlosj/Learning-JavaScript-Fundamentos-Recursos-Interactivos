@@ -1,0 +1,25 @@
+/* Gallery */
+#gallery {
+	margin:auto;
+	position:relative;
+	width:100%;
+}
+
+#gallery ul{
+	padding:20px;
+}
+
+#gallery ul li{
+	cursor:pointer;
+	padding:10px;
+	transition:.6s;
+}
+
+#gallery ul li:hover{
+	opacity:.6;
+	transition:.6s;
+}
+
+#gallery ul li img{
+	width:100%;
+}
