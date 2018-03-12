@@ -10,13 +10,28 @@ var slider = {
   retroceder: null,
   velocidad: 3000,
   reiniciar_loop: false,
+  tamanioSlide: null,
   /* Inicializa las funcionalidades del Slider */
   inicio : function() {
     slider .contenedor = document .querySelector( '#slider ul' );       // Obtiene el contenedor donde se despliegan cada uno de los Slides
     slider .li = document .querySelectorAll( '#slider ul li' );         // Todos los elementos LI que contienen un slide
+    slider .paginador = document .querySelectorAll( '#pager li' );      // Obtiene todos los elementos que componen el paginador del Slider
     slider .automatico();
     slider .paginacion();
     slider .flechas();
+
+    slider .calcularElementosSlider();
+  },
+  // Función que permite que el Slider sea dinámico y puedan agregarse elementos en el DOm y calcular las dimensiones de cada elemento automáticamente
+  calcularElementosSlider : function () {
+    let cantidadPaginas = slider .li .length;                                   // Calcula cantidad de elementos LI o (Diapositivas) en el DOM
+
+    slider .contenedor .style .width = ( slider .li .length * 100 ) + '%';      // Calcula y Modifica Dinámicamente el tamaño del contenedor de diapositivas (Slides) de acuerdo a la cantidad de elementos en el DOM
+
+    // Recorre cada 'Slide' del DOM, Calcula y Modifica Dinámicamente el tamaño de cada uno de ellos
+    slider .li .forEach( ( slider ) => {
+      slider .style .width = ( 100 / cantidadPaginas ) + '%';
+    });
   },
   // Agrega la funcionalidad de desplazamiento de 'diapositivas' usando las Flechas laterales del Slider
   flechas : function() {
@@ -63,8 +78,6 @@ var slider = {
   },
   // Agrega la funcionalidad de desplazamiento de 'diapositivas' usando el paginador inferior del Slider laterales
   paginacion : function() {
-    slider .paginador = document .querySelectorAll( '#pager li' );      // Obtiene todos los elementos que componen el paginador del Slider
-
     // Recorre cada uno de los elementos que representan cada una de las diapositivas del Slider y asigna dinámicamente el evento click a cada uno de ellos
     slider .paginador .forEach( ( slide ) => {
       slide .addEventListener( 'click', slider .accionPaginador );      // Agrega el evento 'click' a cada uno de los elementos
