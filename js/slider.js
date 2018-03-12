@@ -56,7 +56,7 @@ var slider = {
     }
 
     slider .mover( slider .pagina );
-    console .log( 'pagina: ', slider .pagina );
+    // console .log( 'pagina: ', slider .pagina );
 
     slider .mueveIndicadorPagina( slider .pagina );
   },
@@ -72,7 +72,7 @@ var slider = {
     }
 
     slider .mover( slider .pagina );
-    console .log( 'pagina: ', slider .pagina );
+    // console .log( 'pagina: ', slider .pagina );
 
     slider .mueveIndicadorPagina( slider .pagina );
   },
