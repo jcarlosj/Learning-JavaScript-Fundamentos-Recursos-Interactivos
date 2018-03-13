@@ -52,9 +52,18 @@ var gallery = {
     gallery .modal .childNodes[ 0 ] .style . width = '100%';                    // Despliega la imagen al 100% del espacio del elemento con 'id' : 'modal'
     gallery .modal .childNodes[ 0 ] .style . border = '10px solid white';       // Agrega un borde a la imagen
 
+    /* Crea un nuevo MediaQuery desde JavaScript de acuerdo al 'mediaQueryString' que se le pasa para crear la regla, en este caso '( min-width : 1000px )'
+      'window.matchMedia' Retorna un nuevo objeto MediaQuerylist. */
+    if( window .matchMedia( '( min-width : 1000px )' ) .matches ) {     // 'matches' permite hacer la verificación del resultado del 'mediaQueryString'
+      gallery .modal .style .width = '60%';
+    }
+    else {
+      gallery .modal .style .width = '90%';
+    }
+
     gallery .modal .style .display = 'block';
     gallery .modal .style .position = 'relative';
-    gallery .modal .style .width = '60%';
+
     /* Las siguientes instrucciones ayudan a que la imagen se centre automáticamente independientemente del tamaño de la imagen */
     gallery .modal .style .top = '50%';                                         // Alinea la imagen al 50% verticalmente a partir de la parte superior del elemento con 'id' : 'lightbox'
     gallery .modal .style .left = '50%';                                        // Alinea la imagen al 50% horizontalmente a partir de la parte izquierda del elemento con 'id' : 'lightbox'
