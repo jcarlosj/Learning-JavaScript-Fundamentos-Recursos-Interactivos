@@ -19,10 +19,10 @@ var gallery = {
   /* Captura el elemento que contiene la imagen */
   captura : function ( event ) {
     gallery .pathImage = event .target;
-    gallery .efecto_lightbox( gallery .pathImage );
+    gallery .open_lightbox( gallery .pathImage );
   },
   /* Lanza el Lightbox */
-  efecto_lightbox : function( elementImg ) {
+  open_lightbox : function( elementImg ) {
     gallery .elementBody = document .querySelector( 'body' );                                                     // Obtiene el elemento 'body' del DOM
     gallery .elementBody .appendChild( document .createElement( 'div' ) ) .setAttribute( 'id', 'lightbox' );      // Crea y Agrega un elemento 'div' dentro del elemento 'body del DOM y Agrega un atributo 'id' al elemento creado
     gallery .lightbox = document .querySelector( '#lightbox' );                                                   // Obtiene el elemento 'div' creado con el 'id': 'lightbox'
@@ -80,6 +80,12 @@ var gallery = {
     gallery .modal .childNodes[ 1 ] .style . textAlign = 'center';
     gallery .modal .childNodes[ 1 ] .style . background = 'white';
     gallery .modal .childNodes[ 1 ] .style . borderRadius = '0 0 0 5px';
+
+    // Agrega evento 'click' al elemento 'div', con 'class' : 'close-image'
+    gallery .modal .childNodes[ 1 ] .addEventListener( 'click', gallery .close_lightbox );
+  },
+  close_lightbox : function () {
+    gallery .lightbox .parentNode .removeChild( gallery .lightbox );
   }
 }
 
