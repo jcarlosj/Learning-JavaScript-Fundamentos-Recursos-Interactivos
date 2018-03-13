@@ -36,7 +36,7 @@ var gallery = {
     gallery .lightbox .style .top = 0;
     gallery .lightbox .style .left = 0;
 
-    gallery .load_image( elementImg );
+    gallery .load_image( elementImg );                                          // Carga la imagen sobre el 'lightbox'
   },
   /* Despliega la imagen dentro del Lightbox */
   load_image : function( elementImg ) {
@@ -50,15 +50,7 @@ var gallery = {
     gallery .modal .childNodes[ 0 ] .style . width = '100%';                    // Despliega la imagen al 100% del espacio del elemento con 'id' : 'modal'
     gallery .modal .childNodes[ 0 ] .style . border = '10px solid white';       // Agrega un borde a la imagen
 
-    /* Crea un nuevo MediaQuery desde JavaScript de acuerdo al 'mediaQueryString' que se le pasa para crear la regla, en este caso '( min-width : 1000px )'
-      'window.matchMedia' Retorna un nuevo objeto MediaQuerylist. */
-    if( window .matchMedia( '( min-width : 1000px )' ) .matches ) {     // 'matches' permite hacer la verificación del resultado del 'mediaQueryString'
-      gallery .modal .style .width = '60%';
-    }
-    else {
-      gallery .modal .style .width = '90%';
-    }
-
+    gallery .createMediaQuery();
     gallery .animate();
 
     gallery .modal .style .display = 'block';
@@ -80,14 +72,27 @@ var gallery = {
     // Agrega evento 'click' al elemento 'div', con 'class' : 'close-image'
     gallery .modal .childNodes[ 1 ] .addEventListener( 'click', gallery .close_lightbox );
   },
+  /* Función que crea un Media Query desde JavaScript */
+  createMediaQuery : function() {
+    /* Crea un nuevo MediaQuery desde JavaScript de acuerdo al 'mediaQueryString' que se le pasa para crear la regla, en este caso '( min-width : 1000px )'
+      'window.matchMedia' Retorna un nuevo objeto MediaQuerylist. */
+    if( window .matchMedia( '( min-width : 1000px )' ) .matches ) {     // 'matches' permite hacer la verificación del resultado del 'mediaQueryString'
+      gallery .modal .style .width = '60%';
+    }
+    else {
+      gallery .modal .style .width = '90%';
+    }
+  },
+  /* Función que cierra el 'lightbox' */
   close_lightbox : function () {
     gallery .lightbox .parentNode .removeChild( gallery .lightbox );
   },
+  /* Función que anima el despliegue de las imagenes sobre el 'lightbox' */
   animate : function() {
     let anchoImagen,
         altoImagen;
 
-    // Valida el tipo de animación para el Lightbox
+    // Valida el tipo de animación para el Lightbox es 'desplazamiento de izquierda a derecha'
     if( gallery .tipo_animacion == 'slide_left' ) {
       gallery .modal .style .top = '50%';                                       // Alinea la imagen al 50% verticalmente a partir de la parte superior del elemento con 'id' : 'lightbox'
       gallery .modal .style .left = 0;
@@ -98,18 +103,10 @@ var gallery = {
         gallery .modal .style .transition = '.5s left ease';                    // Debe ponerse al principio, para que la animación se realice
         gallery .modal .style .left = '50%';
         gallery .modal .style .opacity = 1;
-
-        anchoImagen = gallery .modal .childNodes[ 0 ] .width,                   // Obtiene el ancho de la imagen, que esta contenida en el elemento hijo del elemento con 'id' : 'modal'
-        altoImagen = gallery .modal .childNodes[ 0 ] .height;                   // Obtiene el alto de la imagen, que esta contenida en el elemento hijo del elemento con 'id' : 'modal'
-
-        console .log( 'ancho imagen: ', anchoImagen );
-        console .log( 'alto imagen: ', altoImagen );
-
-        gallery .modal .style .marginTop = -( altoImagen / 2 ) + 'px';          // Resta la mitad del alto de la imagen y lo agrega como margen negativo (a la parte superior) lo que hace que la imagen se centre verticalmente
-        gallery .modal .style .marginLeft = -( anchoImagen / 2 ) + 'px';        // Resta la mitad del ancho de la imagen y lo agrega como margen negativo (a la izquierda) lo que hace que la imagen se centre horizontalmente
       }, 50 );
     }
 
+    // Valida el tipo de animación para el Lightbox es 'desplazamiento de derecha a izquierda'
     if( gallery .tipo_animacion == 'slide_right' ) {
       gallery .modal .style .top = '50%';                                       // Alinea la imagen al 50% verticalmente a partir de la parte superior del elemento con 'id' : 'lightbox'
       gallery .modal .style .right = '-100%';
@@ -120,18 +117,10 @@ var gallery = {
         gallery .modal .style .transition = '.5s right ease';                   // Debe ponerse al principio, para que la animación se realice
         gallery .modal .style .right = '-50%';
         gallery .modal .style .opacity = 1;
-
-        anchoImagen = gallery .modal .childNodes[ 0 ] .width,                   // Obtiene el ancho de la imagen, que esta contenida en el elemento hijo del elemento con 'id' : 'modal'
-        altoImagen = gallery .modal .childNodes[ 0 ] .height;                   // Obtiene el alto de la imagen, que esta contenida en el elemento hijo del elemento con 'id' : 'modal'
-
-        console .log( 'ancho imagen: ', anchoImagen );
-        console .log( 'alto imagen: ', altoImagen );
-
-        gallery .modal .style .marginTop = -( altoImagen / 2 ) + 'px';          // Resta la mitad del alto de la imagen y lo agrega como margen negativo (a la parte superior) lo que hace que la imagen se centre verticalmente
-        gallery .modal .style .marginLeft = -( anchoImagen / 2 ) + 'px';        // Resta la mitad del ancho de la imagen y lo agrega como margen negativo (a la izquierda) lo que hace que la imagen se centre horizontalmente
       }, 50 );
     }
 
+    // Valida el tipo de animación para el Lightbox es 'desplazamiento de arriba a abajo'
     if( gallery .tipo_animacion == 'slide_top' ) {
       gallery .modal .style .top = '-100%';                                       // Alinea la imagen al 50% verticalmente a partir de la parte superior del elemento con 'id' : 'lightbox'
       gallery .modal .style .left = '50%';
@@ -142,18 +131,10 @@ var gallery = {
         gallery .modal .style .transition = '.5s top ease';                    // Debe ponerse al principio, para que la animación se realice
         gallery .modal .style .top = '50%';
         gallery .modal .style .opacity = 1;
-
-        anchoImagen = gallery .modal .childNodes[ 0 ] .width,                   // Obtiene el ancho de la imagen, que esta contenida en el elemento hijo del elemento con 'id' : 'modal'
-        altoImagen = gallery .modal .childNodes[ 0 ] .height;                   // Obtiene el alto de la imagen, que esta contenida en el elemento hijo del elemento con 'id' : 'modal'
-
-        console .log( 'ancho imagen: ', anchoImagen );
-        console .log( 'alto imagen: ', altoImagen );
-
-        gallery .modal .style .marginTop = -( altoImagen / 2 ) + 'px';          // Resta la mitad del alto de la imagen y lo agrega como margen negativo (a la parte superior) lo que hace que la imagen se centre verticalmente
-        gallery .modal .style .marginLeft = -( anchoImagen / 2 ) + 'px';        // Resta la mitad del ancho de la imagen y lo agrega como margen negativo (a la izquierda) lo que hace que la imagen se centre horizontalmente
       }, 50 );
     }
 
+    // Valida el tipo de animación para el Lightbox es 'desplazamiento de abajo a arriba'
     if( gallery .tipo_animacion == 'slide_bottom' ) {
       gallery .modal .style .bottom = '-100%';                                       // Alinea la imagen al 50% verticalmente a partir de la parte superior del elemento con 'id' : 'lightbox'
       gallery .modal .style .left = '50%';
@@ -164,15 +145,6 @@ var gallery = {
         gallery .modal .style .transition = '.5s bottom ease';                    // Debe ponerse al principio, para que la animación se realice
         gallery .modal .style .bottom = '-50%';
         gallery .modal .style .opacity = 1;
-
-        anchoImagen = gallery .modal .childNodes[ 0 ] .width,                   // Obtiene el ancho de la imagen, que esta contenida en el elemento hijo del elemento con 'id' : 'modal'
-        altoImagen = gallery .modal .childNodes[ 0 ] .height;                   // Obtiene el alto de la imagen, que esta contenida en el elemento hijo del elemento con 'id' : 'modal'
-
-        console .log( 'ancho imagen: ', anchoImagen );
-        console .log( 'alto imagen: ', altoImagen );
-
-        gallery .modal .style .marginTop = -( altoImagen / 2 ) + 'px';          // Resta la mitad del alto de la imagen y lo agrega como margen negativo (a la parte superior) lo que hace que la imagen se centre verticalmente
-        gallery .modal .style .marginLeft = -( anchoImagen / 2 ) + 'px';        // Resta la mitad del ancho de la imagen y lo agrega como margen negativo (a la izquierda) lo que hace que la imagen se centre horizontalmente
       }, 50 );
     }
 
@@ -185,17 +157,18 @@ var gallery = {
       setTimeout( () => {
         gallery .modal .style .transition = '.9s opacity ease';                 // Debe ponerse al principio, para que la animación se realice
         gallery .modal .style .opacity = 1;
-
-        anchoImagen = gallery .modal .childNodes[ 0 ] .width,                   // Obtiene el ancho de la imagen, que esta contenida en el elemento hijo del elemento con 'id' : 'modal'
-        altoImagen = gallery .modal .childNodes[ 0 ] .height;                   // Obtiene el alto de la imagen, que esta contenida en el elemento hijo del elemento con 'id' : 'modal'
-
-        console .log( 'ancho imagen: ', anchoImagen );
-        console .log( 'alto imagen: ', altoImagen );
-
-        gallery .modal .style .marginTop = -( altoImagen / 2 ) + 'px';          // Resta la mitad del alto de la imagen y lo agrega como margen negativo (a la parte superior) lo que hace que la imagen se centre verticalmente
-        gallery .modal .style .marginLeft = -( anchoImagen / 2 ) + 'px';        // Resta la mitad del ancho de la imagen y lo agrega como margen negativo (a la izquierda) lo que hace que la imagen se centre horizontalmente
       }, 50 );
     }
+
+    anchoImagen = gallery .modal .childNodes[ 0 ] .width,                   // Obtiene el ancho de la imagen, que esta contenida en el elemento hijo del elemento con 'id' : 'modal'
+    altoImagen = gallery .modal .childNodes[ 0 ] .height;                   // Obtiene el alto de la imagen, que esta contenida en el elemento hijo del elemento con 'id' : 'modal'
+
+    console .log( 'ancho imagen: ', anchoImagen );
+    console .log( 'alto imagen: ', altoImagen );
+
+    gallery .modal .style .marginTop = -( altoImagen / 2 ) + 'px';          // Resta la mitad del alto de la imagen y lo agrega como margen negativo (a la parte superior) lo que hace que la imagen se centre verticalmente
+    gallery .modal .style .marginLeft = -( anchoImagen / 2 ) + 'px';        // Resta la mitad del ancho de la imagen y lo agrega como margen negativo (a la izquierda) lo que hace que la imagen se centre horizontalmente
+
   }
 }
 
