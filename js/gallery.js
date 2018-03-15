@@ -11,7 +11,7 @@ var gallery = {
   /* Inicializa las funcionalidades de la Galeria */
   inicio: function() {
     gallery .imagenes = document .querySelectorAll( '#gallery ul li img' );        // Obtiene todas las imágenes de la galería
-    console.log('gallery', gallery .imagenes );
+    // console.log('gallery', gallery .imagenes );
 
     gallery .imagenes .forEach( ( image ) => {
       image .addEventListener( 'click', gallery .captura );
@@ -163,8 +163,9 @@ var gallery = {
     anchoImagen = gallery .modal .childNodes[ 0 ] .width,                   // Obtiene el ancho de la imagen, que esta contenida en el elemento hijo del elemento con 'id' : 'modal'
     altoImagen = gallery .modal .childNodes[ 0 ] .height;                   // Obtiene el alto de la imagen, que esta contenida en el elemento hijo del elemento con 'id' : 'modal'
 
+    /*
     console .log( 'ancho imagen: ', anchoImagen );
-    console .log( 'alto imagen: ', altoImagen );
+    console .log( 'alto imagen: ', altoImagen );*/
 
     gallery .modal .style .marginTop = -( altoImagen / 2 ) + 'px';          // Resta la mitad del alto de la imagen y lo agrega como margen negativo (a la parte superior) lo que hace que la imagen se centre verticalmente
     gallery .modal .style .marginLeft = -( anchoImagen / 2 ) + 'px';        // Resta la mitad del ancho de la imagen y lo agrega como margen negativo (a la izquierda) lo que hace que la imagen se centre horizontalmente

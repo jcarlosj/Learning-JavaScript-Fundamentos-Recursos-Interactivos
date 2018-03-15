@@ -1,0 +1,14 @@
+/* Mouse Effect */
+#mouse-effect {
+  background-color: silver;
+  height: 500px;
+  overflow: hidden;      /* Enmascarar */
+  position: relative;
+  width: 100%;
+}
+
+#mouse-effect figure {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
