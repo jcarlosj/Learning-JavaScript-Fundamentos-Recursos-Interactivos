@@ -5,6 +5,10 @@ var mouseEffect = {
   /* Atributos */
   zona: null,
   figures: null,
+  x: 0,
+  y: 0,
+  horizontal: true,
+  vertical: true,
   /* Inicializa las funcionalidades de la Galeria */
   inicio : function() {
     mouseEffect .zona = document .querySelector( '#mouse-effect' );               // Obtiene el elemento con el 'id' : 'mouse-effect'
@@ -16,10 +20,26 @@ var mouseEffect = {
     mouseEffect .zona .addEventListener( 'mousemove', mouseEffect .mover );
   },
   mover : function( event ) {
-    console .group( 'Dentro del elemento con "id: mouse-effect"' );
-      console .log( 'coordenada X: ', event .offsetX );
-      console .log( 'coordenada Y: ', event .offsetY );
-    console .groupEnd();
+    // Obtiene las coordenadas X y Y del puntero
+    mouseEffect .x = event .offsetX;
+    mouseEffect .y = event .offsetY;
+
+    // Recorre cada uno de los elementos 'figure'
+    mouseEffect .figures .forEach( ( figure, index ) => {
+
+      // Valida si esta permitido el movimiento horizontal
+      if( mouseEffect .horizontal ) {
+        figure .style .left = -mouseEffect .x / ( index * 100 + 50 ) + '%';
+      }
+
+      // Valida si esta permitido el movimiento vertical
+      if( mouseEffect .vertical ) {
+        // TODO: Verificar por que no hay movimiento vertical de cada imagen
+        figure .style .top = mouseEffect .y / ( index * 100 + 50 ) + '%';
+      }
+
+    });
+
   },
   addImages : function() {
     // Recorre cada uno de los elementos 'figure'
