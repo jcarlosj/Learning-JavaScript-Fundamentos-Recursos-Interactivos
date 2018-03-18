@@ -34,7 +34,6 @@ var mouseEffect = {
 
       // Valida si esta permitido el movimiento vertical
       if( mouseEffect .vertical ) {
-        // TODO: Verificar por que no hay movimiento vertical de cada imagen
         figure .style .top = mouseEffect .y / ( index * 100 + 50 ) + '%';
       }
 
@@ -48,13 +47,16 @@ var mouseEffect = {
       figure .innerHTML = `<img src="images/mouse_effect/plano0${ index }.png">`;   // Agrega el elemento 'img' con el path de cada una de las imágenes a elemento 'figure'
       figure .style .zIndex = -index;                                               // Define el orden de cada una de las imagenes como capas para superponeras unas sobre las otras en un orden adecuado
 
-
       setTimeout( () => {
-        figure .style .height = figure .childNodes[ 0 ] .height + 'px';             // Calcula la altura de la imágen y asigna la altura real de la imagen dinámicamente
+        // Calcula la altura de la imágen y asigna la altura real de la imagen dinámicamente
+        //console .log( 'Altura imagen: ', figure .style .height = figure .childNodes[ 0 ] .height + 'px' );
+        figure .style .height = figure .childNodes[ 0 ] .height + 'px';             // Aplica la altura a cada elemento 'figure' que contiene cada una de las imágenes
+        figure .parentNode .style .height = figure .childNodes[ 0 ] .height + 'px'; // Aplica la altura a el elemento padre de los elementos 'figure' (Elemento con 'id' : 'mouse-effect')
       }, 50 );
       /* NOTA : Debemos esperar a que todos los elementos del DOM incluidas las imagenes para poder calcular su altura de lo contrario
                 no será posible, pues no existiran cuando se realice el calculo. Por eso se usa un temporizador. Otra forma de hacerlo
                 es usar 'window .onload' para calcular la altura de la imágen solo cuando todo el DOM este cargado */
+
     });
 
   }
