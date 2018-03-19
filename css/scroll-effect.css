@@ -1,0 +1,36 @@
+/* Scroll Effect */
+#scroll-effect article aside {
+  background-color: white;
+  border: 1px solid silver;
+  height: auto;
+  margin: 10px auto;
+  overflow: hidden;
+  position: relative;
+}
+
+#scroll-effect article aside img {
+  border: 5px solid white;
+  width: 100%;
+}
+
+#scroll-effect article aside h1 {
+  color: #666;
+  font-size: 30px;
+  padding: 10px 20px;
+}
+
+#scroll-effect article aside p {
+  border: 5px solid  white;
+  width: 100%;
+}
+
+#scroll-effect article aside button {
+  background-color: #333;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  float:  right;
+  font-size: 12px;
+  margin: 20px;
+  padding: 10px;
+}
