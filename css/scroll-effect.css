@@ -1,4 +1,8 @@
 /* Scroll Effect */
+#scroll-effect {
+  background-color: white;
+}
+
 #scroll-effect article aside {
   background-color: white;
   border: 1px solid silver;
