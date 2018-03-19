@@ -1,5 +1,6 @@
 /* Mouse Effect */
 #mouse-effect {
+  /* TODO: Propiedad overflow: hidden no funciona en Firefox */
   overflow: hidden;      /* Enmascarar */
   position: relative;
   width: 100%;

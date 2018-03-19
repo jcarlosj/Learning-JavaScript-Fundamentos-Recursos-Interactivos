@@ -11,6 +11,21 @@
 	text-decoration: none;
 }
 
+#background-page {
+  background-size: cover;
+  background: url( '../images/slides/slide03.jpg' );
+  height: 100%;
+  position: fixed;
+
+
+  width: 100%;
+  z-index: -10;
+}
+
+.background-white {
+	background-color: white;
+}
+
 .content-fluid{
 	height: auto;
 	margin:auto;
@@ -33,6 +48,10 @@
 }
 
 /* Encabezado sitio */
+header {
+	background-color: white;
+}
+
 header #logotipo{
 	padding:20px;
 	text-align: center;
