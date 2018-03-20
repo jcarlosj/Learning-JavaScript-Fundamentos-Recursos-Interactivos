@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/gallery.css">
     <link rel="stylesheet" href="css/mouse-effect.css">
     <link rel="stylesheet" href="css/scroll-effect.css">
+    <link rel="stylesheet" href="css/formulario.css">
     <link rel="stylesheet" href="css/fontawesome-all.min.css">
   </head>
   <body>
@@ -29,7 +30,7 @@
             <li class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><a href="#galeria">Galería</a></li>
             <li class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><a href="#efecto-mouse">Efecto mouse</a></li>
             <li class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><a href="#efecto-scroll">Efecto scroll</a></li>
-            <li class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><a href="#">Formulario</a></li>
+            <li class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><a href="#formulario">Formulario</a></li>
             <li class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><a href="#">Angular</a></li>
           </ul>
         </nav>
@@ -202,6 +203,62 @@
           </aside>
           <div class="col-lg-2 col-md-2 col-sm-1 col-xs-0">&nbsp;</div>
         </article>
+      </div>
+
+      <!-- Formulario -->
+      <h1 id="formulario" class="row titulos">
+        <hr />Formulario <hr />
+      </h1>
+      <div id="formulario" class="row">
+        <form class="" action="#" method="post">
+          <h1>Ingrese sus datos</h1>
+          <label for="nombre">Nombre Completo</label>
+          <input id="nombre" type="text" name="nombre" value="" placeholder="Ej: Elisa María Giraldo">
+          <label for="clave">Contraseña</label>
+          <input id="clave" type="password" name="clave" value="" placeholder="Digite una clave segura">
+          <label for="email">Correo Electrónico</label>
+          <input id="email" type="email" name="email" value="" placeholder="Ej: egiraldo@correo.co">
+          <label for="color">Género</label>
+          <select id="color" class="" name="color">
+            <option value="">Seleccione..</option>
+            <option value="masculino">Masculino</option>
+            <option value="femenino">Femenino</option>
+          </select>
+          <hr>
+          <p>Actividades que realiza</p>
+          <input id="caminata" type="checkbox" name="actividad" value="">
+          <label class="checkbox-field" for="caminata"><span></span>Caminata</label>
+          <input id="ciclismo" type="checkbox" name="actividad" value="">
+          <label class="checkbox-field" for="ciclismo"><span></span>Ciclismo</label>
+          <input id="camping" type="checkbox" name="actividad" value="">
+          <label class="checkbox-field" for="camping"><span></span>Camping</label>
+          <input id="escalada" type="checkbox" name="actividad" value="">
+          <label class="checkbox-field" for="escalada"><span></span>Escalada</label>
+          <input id="atletismo" type="checkbox" name="actividad" value="">
+          <label class="checkbox-field" for="atletismo"><span></span>Atletísmo</label>
+          <input id="gimnasta" type="checkbox" name="actividad" value="">
+          <label class="checkbox-field" for="gimnasta"><span></span>Gimnasta</label>
+          <input id="motociclismo" type="checkbox" name="actividad" value="">
+          <label class="checkbox-field" for="motociclismo"><span></span>Motociclismo</label>
+
+          <p>Seleccione forma de pago</p>
+          <input id="efectivo" type="radio" name="forma_pago" value="" checked>
+          <label class="radio-field" for="efectivo"><span></span>Efectivo</label>
+          <input id="debito" type="radio" name="forma_pago" value="">
+          <label class="radio-field" for="debito"><span></span>Debito</label>
+          <input id="credito" type="radio" name="forma_pago" value="">
+          <label class="radio-field" for="credito"><span></span>Crédito</label>
+
+          <hr>
+          <label for="mensaje"></label>
+          <textarea id="mensaje" name="mensaje" rows="10" cols="40" required></textarea>
+
+          <input id="terminos" type="checkbox" name="terminos" value="">
+          <label class="checkbox-field" for="terminos"><span></span><a href="#">Acepto términos y condiciones</a></label>
+
+          <button type="submit" name="button">Enviar</button>
+
+        </form>
       </div>
 
     </div>
