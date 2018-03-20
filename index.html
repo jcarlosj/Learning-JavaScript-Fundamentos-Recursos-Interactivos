@@ -16,7 +16,7 @@
 
     <div class="content-fluid">
       <!-- Encabezado de la página -->
-      <header class="row">
+      <header id="cabecera" class="row">
         <figure id="logotipo" class="col-lg-2 col-md-3 col-sm-2 col-xs-12">
           <img src="images/logotipo.png" alt="">
         </figure>
@@ -25,13 +25,12 @@
         </div>
         <nav class="col-lg-6 col-md-7 col-sm-9 col-xs-12">
           <ul>
-            <li class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><a href="#">Botón 1</a></li>
-            <li class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><a href="#">Botón 2</a></li>
-            <li class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><a href="#">Botón 3</a></li>
-            <li class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><a href="#">Botón 4</a></li>
-            <li class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><a href="#">Botón 5</a></li>
-            <li class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><a href="#">Botón 6</a></li>
-
+            <li class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><a href="#cabecera">Inicio</a></li>
+            <li class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><a href="#galeria">Galería</a></li>
+            <li class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><a href="#efecto-mouse">Efecto mouse</a></li>
+            <li class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><a href="#efecto-scroll">Efecto scroll</a></li>
+            <li class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><a href="#">Formulario</a></li>
+            <li class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><a href="#">Angular</a></li>
           </ul>
         </nav>
       </header>   <!-- header.row -->
@@ -105,6 +104,9 @@
       </div>  <!-- .slider -->
 
       <!-- Gallery -->
+      <h1 id="galeria" class="row titulos">
+        <hr />Galería de imágenes <hr />
+      </h1>
       <div id="gallery" class="row">
         <ul>
           <li class="col-lg-2 col-md-3 col-sm-4 col-xs-12"><img src="images/gallery/01.jpg" alt=""></li>
@@ -123,6 +125,9 @@
       </div>
 
       <!-- Mouse Effect -->
+        <h1 id="efecto-mouse" class="row titulos">
+          <hr />Efecto con el mouse <hr />
+        </h1>
       <div id="content-mouse-effect">
         <div id="mouse-effect" class="row">
           <figure></figure>
@@ -133,6 +138,9 @@
       </div>
 
       <!-- Scroll Effect -->
+      <h1 id="efecto-scroll" class="row titulos">
+        <hr />Efecto con el scroll <hr />
+      </h1>
       <div id="scroll-effect" class="row">
         <!-- Artículo 1 -->
         <article class="row">

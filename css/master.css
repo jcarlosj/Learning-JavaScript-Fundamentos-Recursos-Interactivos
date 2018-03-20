@@ -65,6 +65,19 @@ header nav ul li a{
 	text-align:center;
 }
 
+/* Titulos */
+h1.titulos {
+	background-color: white;
+	color: #666;
+	font-weight: 100;
+	text-align: center;
+}
+
+h1.titulos hr {
+	margin: 20px;
+	border: 1px solid #DDD;
+}
+
 /* SISTEMA DE COLUMNAS: usando Media Queries */
 /* lg - Large (Desktop) */
 @media(min-width:1200px){
