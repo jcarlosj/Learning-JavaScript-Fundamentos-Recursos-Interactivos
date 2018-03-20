@@ -11,6 +11,7 @@ var scrollEffect = {
   path: null,
   intervaloScroll: null,
   destinoScroll: 0,
+  paddingEncabezadoSeccion: 0,
   /* Inicializa las funcionalidades del 'Efecto Scroll' */
   inicio : function() {
     scrollEffect .elementHeader = document .querySelector( 'header' );                  // Obtiene el elemento 'header' del DOM
@@ -31,7 +32,7 @@ var scrollEffect = {
   desplazamientoSeccion : function( event ) {
     event .preventDefault();                                                                // Elimino los eventos por defecto del navegador (No se desplaza el scroll)
     scrollEffect .path = event .target .getAttribute( 'href' );                             // Obtiene el atributo 'href' del elemento 'a' al que se le ha dado 'click'
-    scrollEffect .destinoScroll = document .querySelector( scrollEffect .path ) .offsetTop; // Obtiene la distancia desde el elemento que contiene la ruta de destino y su elemento padre (Su limite superior)
+    scrollEffect .destinoScroll = document .querySelector( scrollEffect .path ) .offsetTop - scrollEffect .paddingEncabezadoSeccion; // Obtiene la distancia desde el elemento que contiene la ruta de destino y su elemento padre (Su limite superior)
     /* NOTA: 'offsetTop' Retorna la distancia del elemento actual respecto al borde superior del nodo padre ('offsetParent') */
 
     console .log( 'Ruta ', scrollEffect .path );
@@ -75,10 +76,12 @@ var scrollEffect = {
     if( scrollEffect .desplazamientoEnY > scrollEffect .elementHeader .clientHeight ) {
       scrollEffect .elementHeader .style .position = 'fixed';
       scrollEffect .elementHeader .style .zIndex = '10';
+      scrollEffect .paddingEncabezadoSeccion = scrollEffect .elementHeader .clientHeight;
     }
     else {
       scrollEffect .elementHeader .style .position = 'relative';
       scrollEffect .elementHeader .style .zIndex = '0';
+      scrollEffect .paddingEncabezadoSeccion = scrollEffect .elementHeader .clientHeight*2;
     }
 
     // Valida si el desplazamiento actual del 'scroll' es mayor a la distancia superior con su elemento padre
@@ -89,7 +92,7 @@ var scrollEffect = {
     }
     else {
       scrollEffect .articulos .forEach( ( articulo ) => {
-        articulo .style .marginLeft = scrollEffect .desplazamientoEnY / 25 - 100 + '%';
+        articulo .style .marginLeft = scrollEffect .desplazamientoEnY / 22.8 - 100 + '%';
       });
     }
     /* NOTA: 'offsetTop' Retorna la distancia del elemento actual respecto al borde superior del nodo padre ('offsetParent') */
