@@ -3,7 +3,7 @@
   background-color: white;
 }
 
-#formulario form {
+#formulario-home form {
   background-color: #DDD;
   height: auto;
   margin: auto;
@@ -12,7 +12,7 @@
   width: 70%;
 }
 
-#formulario form h1 {
+#formulario-home form h1 {
   width: 100%;
   line-height: 50px;
   background-color: black;
@@ -21,11 +21,11 @@
   color: white;
 }
 
-#formulario input,
-#formulario label,
-#formulario textarea,
-#formulario p,
-#formulario select {
+#formulario-home input,
+#formulario-home label,
+#formulario-home textarea,
+#formulario-home p,
+#formulario-home select {
   display: block;
   font-size: 14px;
   padding: 10px;
@@ -33,15 +33,21 @@
   width: 100%;
 }
 
+/* Oculta los mensajes de los campos input (nombre, clave y correo electrónico) */
+#formulario-home label span.obligatorio {
+  color: red;
+  opacity: 0;
+}
+
 /* Oculta los input tipo: checkbox y radio */
-#formulario input[type='checkbox'],
-#formulario input[type='radio'] {
+#formulario-home input[type='checkbox'],
+#formulario-home input[type='radio'] {
   display: none;
 }
 
 /* Simula los nuevos campos 'input' (checkbox 7 radio) */
-#formulario label.checkbox-field span,
-#formulario label.radio-field span {
+#formulario-home label.checkbox-field span,
+#formulario-home label.radio-field span {
   background-color: white;
   display: inline-block;
   height: 25px;
@@ -51,17 +57,17 @@
 }
 
 /* Vuelve redondos los campos que simulan los campos 'radio' */
-#formulario label.radio-field span {
+#formulario-home label.radio-field span {
   border-radius: 100%;
 }
 
 /* Despliega la imagen cuando el elemento 'checkbox' a sido seleccionado */
-#formulario input[type='checkbox']:checked + label.checkbox-field span {
+#formulario-home input[type='checkbox']:checked + label.checkbox-field span {
   background: url( '../images/formulario/box.jpg' );
 }
 
 /* Despliega la imagen cuando el elemento 'radio' a sido seleccionado */
-#formulario input[type='radio']:checked + label.radio-field span {
+#formulario-home input[type='radio']:checked + label.radio-field span {
   background: url( '../images/formulario/radio.jpg' );
 }
 
