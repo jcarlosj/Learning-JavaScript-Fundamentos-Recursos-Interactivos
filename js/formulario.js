@@ -107,6 +107,11 @@ var formulario = {
         }
       }
     }
+    else {
+      /* Si el campo está vacío */
+      // Elimina elemento que contiene el mensaje de ERROR
+      document .querySelector( `[for=${ event .target .id }] .error` ) .parentNode .removeChild( document .querySelector( `[for=${ event .target .id }] .error` ) );
+    }
   }
 }
 
