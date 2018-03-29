@@ -5,6 +5,7 @@ var formulario = {
   /* Atributos */
   campos_texto: null,
   valor_campo_texto: null,
+  regExp: null,
   inicio : function() {
     formulario .campos_texto = document .querySelectorAll( '#formulario-home input.campos_texto' );     // Obtiene todos los campos input donde se ingresa texto
 
@@ -61,7 +62,7 @@ var formulario = {
     // Valida que el campo no esté vacío
     if( valor_campo_texto != '' ) {
       console .log( 'No esta vacio' );
-      // Valida si la entrada es válida
+      // Valida si la entrada del campo 'nombre' es válida
       if( event .target .id == 'nombre' ) {
         // Valida que la longitud del valor sea inferior a 2 ni mayor a 6 caracteres
         if( valor_campo_texto .length < 2 || valor_campo_texto .length > 6 ) {
@@ -74,12 +75,15 @@ var formulario = {
         }
       }
 
-      // Valida si la entrada es válida
+      // Valida si la entrada del campo 'clave' es válida
       if( event .target .id == 'clave' ) {
-        // Valida que la longitud del valor sea inferior a 8 ni mayor a 16 caracteres
-        if( valor_campo_texto .length < 8 || valor_campo_texto .length > 16 ) {
-          // Agrega elemento que lanza mensaje de ERROR
-          document .querySelector( `[for=${ event .target .id }] .error` ) .innerHTML = '<span style="color: red;"> * Error: El nombre de usuario debe tener entre 8 y 16 caracteres</span>';
+        // Implemento una expresión regular que me permita filtrar una cadena de texto adecuada para el formato de contraseña.
+        formulario .regExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$/;
+
+        // Valida si la expresión regular no se cumple
+        if( !formulario .regExp .test( valor_campo_texto ) ) {
+          // Hay un error en el formato de la contraseña
+          document .querySelector( `[for=${ event .target .id }] .error` ) .innerHTML = '<span style="color: red;"> * Error: La contraseña debe tene mínimo 8 caracteres e incluir: letras mayúsculas, minúsculas y números</span>';
         }
         else {
           // Elimina elemento que contiene el mensaje de ERROR
@@ -89,9 +93,19 @@ var formulario = {
 
       // Valida si la entrada es válida
       if( event .target .id == 'email' ) {
+        // Implemento una expresión regular que me permita filtrar una cadena de texto adecuada para el formato de correo electrónico.
+        formulario .regExp = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 
+        // Valida si la expresión regular no se cumple
+        if( !formulario .regExp .test( valor_campo_texto ) ) {
+          // Hay un error en el formato de la contraseña
+          document .querySelector( `[for=${ event .target .id }] .error` ) .innerHTML = '<span style="color: red;"> * Error: La cadena de texto introducida no es un correo electrónico válido</span>';
+        }
+        else {
+          // Elimina elemento que contiene el mensaje de ERROR
+          document .querySelector( `[for=${ event .target .id }] .error` ) .parentNode .removeChild( document .querySelector( `[for=${ event .target .id }] .error` ) );
+        }
       }
-
     }
   }
 }
