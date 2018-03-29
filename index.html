@@ -210,7 +210,7 @@
         <hr />Formulario <hr />
       </h1>
       <div id="formulario-home" class="row">
-        <form class="" action="#" method="post">
+        <form id="formulario-registro" class="" action="enviar_datos.html" method="post">
           <h1>Ingrese sus datos</h1>
           <label for="nombre">Nombre Completo<span class="obligatorio"> * Campo obligatorio</span></label>
           <input id="nombre" class="campos_texto" type="text" name="nombre" value="" placeholder="Ej: Elisa María Giraldo" required>
@@ -257,7 +257,8 @@
           <input id="terminos" type="checkbox" name="terminos" value="">
           <label class="checkbox-field" for="terminos"><span></span><a href="#">Acepto términos y condiciones</a></label>
 
-          <button type="submit" name="button">Enviar</button>
+          <label id="mensaje-formulario"></label>
+          <button id="btn-enviar" type="submit" name="button">Enviar</button>
 
         </form>
       </div>
