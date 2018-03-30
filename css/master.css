@@ -63,6 +63,16 @@ header nav ul li a{
 	text-align:center;
 }
 
+header #btn-movil-menu span {
+	background: silver;
+	cursor: pointer;
+	height: 40px;
+	margin: 10px;
+	padding: 10px 0;
+	text-align: center;
+	width: 40px;
+}
+
 /* Titulos */
 h1.titulos {
 	background-color: white;
