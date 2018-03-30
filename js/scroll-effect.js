@@ -76,12 +76,28 @@ var scrollEffect = {
     if( scrollEffect .desplazamientoEnY > scrollEffect .elementHeader .clientHeight ) {
       scrollEffect .elementHeader .style .position = 'fixed';
       scrollEffect .elementHeader .style .zIndex = '10';
-      scrollEffect .paddingEncabezadoSeccion = scrollEffect .elementHeader .clientHeight;
+      /* Si el tamaño de la ventana es mayor a 768px agrega el padding (Corrección)
+         Crea un nuevo MediaQuery desde JavaScript de acuerdo al 'mediaQueryString' que se le pasa para crear la regla, en este caso '( min-width : 767px )'
+        'window.matchMedia' Retorna un nuevo objeto MediaQuerylist. */
+      if( window .matchMedia( '(min-width:768px)' ) .matches ) {
+          scrollEffect .paddingEncabezadoSeccion = scrollEffect .elementHeader .clientHeight;
+      }
+      else {
+        scrollEffect .paddingEncabezadoSeccion = scrollEffect .elementHeader .clientHeight;
+      }
     }
     else {
       scrollEffect .elementHeader .style .position = 'relative';
       scrollEffect .elementHeader .style .zIndex = '0';
-      scrollEffect .paddingEncabezadoSeccion = scrollEffect .elementHeader .clientHeight*2;
+      /* Si el tamaño de la ventana es mayor a 768px agrega el padding (Corrección)
+         Crea un nuevo MediaQuery desde JavaScript de acuerdo al 'mediaQueryString' que se le pasa para crear la regla, en este caso '( min-width : 767px )'
+        'window.matchMedia' Retorna un nuevo objeto MediaQuerylist. */
+      if( window .matchMedia( '(min-width:768px)' ) .matches ) {
+          scrollEffect .paddingEncabezadoSeccion = scrollEffect .elementHeader .clientHeight*2;
+      }
+      else {
+        scrollEffect .paddingEncabezadoSeccion = scrollEffect .elementHeader .clientHeight;
+      }
     }
 
     // Valida si el desplazamiento actual del 'scroll' es mayor a la distancia superior con su elemento padre
@@ -92,7 +108,12 @@ var scrollEffect = {
     }
     else {
       scrollEffect .articulos .forEach( ( articulo ) => {
-        articulo .style .marginLeft = scrollEffect .desplazamientoEnY / 22.8 - 100 + '%';
+        /* Si el tamaño de la ventana es mayor a 768px agrega el padding (Corrección)
+           Crea un nuevo MediaQuery desde JavaScript de acuerdo al 'mediaQueryString' que se le pasa para crear la regla, en este caso '( min-width : 767px )'
+          'window.matchMedia' Retorna un nuevo objeto MediaQuerylist. */
+        if( window .matchMedia( '(min-width:768px)' ) .matches ) {
+            articulo .style .marginLeft = scrollEffect .desplazamientoEnY / 22.8 - 100 + '%';
+        }
       });
     }
     /* NOTA: 'offsetTop' Retorna la distancia del elemento actual respecto al borde superior del nodo padre ('offsetParent') */
